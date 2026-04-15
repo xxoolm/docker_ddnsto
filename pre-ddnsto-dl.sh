@@ -3,10 +3,14 @@
 set -eu
 
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-repo_root=$(CDPATH= cd -- "$script_dir/.." && pwd)
+version_file=${VERSION_FILE:-$script_dir/version}
 
 default_version() {
-    sed -n 's/^const VERSION = "\([^"]*\)"$/\1/p' "$repo_root/ddns-client/common/version.go"
+    [ -f "$version_file" ] || {
+        echo "missing version file: $version_file" >&2
+        exit 2
+    }
+    sed -n '1p' "$version_file" | tr -d '[:space:]'
 }
 
 DDNSTO_VERSION=${DDNSTO_VERSION:-$(default_version)}
