@@ -9,13 +9,10 @@ LABEL maintainer="Janson <janson@linkease.com>"
 ARG TARGETPLATFORM
 COPY ddnsto-dl.sh /root/ddnsto-dl.sh
 COPY ddnsto-monitor.sh /usr/bin/ddnsto-monitor.sh
-# RUN set -ex \
-# 	&& chmod +x /root/ddnsto-dl.sh \
-# 	&& /root/ddnsto-dl.sh "${TARGETPLATFORM}"
-ADD dest /dest
 RUN set -ex \
-  cd /dest && /dest/ddnsto-install.sh "${TARGETPLATFORM}" && cd / && rm -rf /dest
-RUN chmod +x /usr/bin/ddnsto-monitor.sh
+	&& chmod +x /root/ddnsto-dl.sh \
+	&& /root/ddnsto-dl.sh "${TARGETPLATFORM}"
+RUN chmod +x /usr/bin/ddnsto-monitor.sh /usr/bin/ddnsto
 
 ENV TZ=Asia/Shanghai
 ENV TOKEN=

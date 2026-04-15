@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Legacy helper kept for reference only.
+# The active build path uses Dockerfile.architecture + ddnsto-dl.sh directly,
+# so this script is not part of the current default image build flow.
+
 # 定义需要下载的架构列表
 ARCH_LIST="x86_64 arm aarch64"
 BIN_DIR="./dest"
