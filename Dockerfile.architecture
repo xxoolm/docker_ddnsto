@@ -7,11 +7,12 @@ FROM --platform=${TARGETPLATFORM} alpine:latest
 LABEL maintainer="Janson <janson@linkease.com>"
 
 ARG TARGETPLATFORM
-COPY ddnsto-dl.sh /root/ddnsto-dl.sh
+COPY install-ddnsto.sh /root/install-ddnsto.sh
 COPY ddnsto-monitor.sh /usr/bin/ddnsto-monitor.sh
+COPY dist /dist
 RUN set -ex \
-	&& chmod +x /root/ddnsto-dl.sh \
-	&& /root/ddnsto-dl.sh "${TARGETPLATFORM}"
+	&& chmod +x /root/install-ddnsto.sh \
+	&& /root/install-ddnsto.sh "${TARGETPLATFORM}" /dist
 RUN chmod +x /usr/bin/ddnsto-monitor.sh /usr/bin/ddnsto
 
 ENV TZ=Asia/Shanghai

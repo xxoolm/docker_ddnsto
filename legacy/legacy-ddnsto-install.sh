@@ -2,7 +2,7 @@
 
 # Legacy helper kept for reference only.
 # Dockerfile.architecture no longer stages binaries into /dest and no longer
-# invokes this installer; the active build path uses ddnsto-dl.sh directly.
+# invokes this installer; the active build path uses install-ddnsto.sh directly.
 
 PLATFORM=$1
 if [ -z "$PLATFORM" ]; then

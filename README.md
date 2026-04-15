@@ -10,7 +10,8 @@ docker build -t linkease/ddnsto .
 
 - `Dockerfile.architecture` 是当前正式使用的多架构构建入口。
 - `Dockerfile` 仅保留用于本地测试。
-- `ddnsto-dl.sh` 是当前正式使用的安装脚本，会下载新的 `ddnsto-binary-<version>.tar.gz` 发布包并解出目标架构二进制。
+- `pre-ddnsto-dl.sh` 会在本地预下载新的 `ddnsto-binary-<version>.tar.gz` 发布包，并展开到 `dist/`。
+- `install-ddnsto.sh` 是当前正式使用的安装脚本，会从本地 `dist/` 目录选择目标架构二进制安装到镜像内。
 - 历史备份脚本已移到 `legacy/` 目录：`legacy/legacy-pre-download.sh`、`legacy/legacy-ddnsto-install.sh`；当前默认构建链路不再使用。
 
 ## Usage 

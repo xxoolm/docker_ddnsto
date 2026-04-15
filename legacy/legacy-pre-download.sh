@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Legacy helper kept for reference only.
-# The active build path uses Dockerfile.architecture + ddnsto-dl.sh directly,
+# The active build path uses Dockerfile.architecture + pre-ddnsto-dl.sh,
 # so this script is not part of the current default image build flow.
 
 # 定义需要下载的架构列表

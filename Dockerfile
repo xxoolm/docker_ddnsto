@@ -6,12 +6,12 @@
 FROM alpine:latest
 LABEL maintainer="Janson <janson@linkease.com>"
 
-COPY ddnsto-dl.sh /root/ddnsto-dl.sh
+COPY install-ddnsto.sh /root/install-ddnsto.sh
 COPY ddnsto-monitor.sh /usr/bin/ddnsto-monitor.sh
-#COPY ddnsto /usr/bin/ddnsto
+COPY dist /dist
 RUN set -ex \
-	&& chmod +x /root/ddnsto-dl.sh \
-	&& /root/ddnsto-dl.sh
+	&& chmod +x /root/install-ddnsto.sh \
+	&& /root/install-ddnsto.sh
 
 RUN chmod +x /usr/bin/ddnsto-monitor.sh /usr/bin/ddnsto
 
